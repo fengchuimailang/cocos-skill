@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cocos Skill"
+  short_description: "Cocos Creator and cocos CLI workflow guidance"
+  default_prompt: "Use this skill when working on Cocos Creator projects, prefabs, scenes, and cocos CLI based validation or automation."
