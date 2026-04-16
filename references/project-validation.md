@@ -27,6 +27,8 @@ Use this for:
 - `assets/script/game/session/*.ts`
 - other host-side entry files that import `cc`
 
+If `npx esbuild` is unavailable on the machine, do not silently skip validation. Report the missing tool and fall back to narrower checks such as import-path inspection, local module existence checks, and JSON validation for changed assets.
+
 ## What this catches
 
 - broken imports
@@ -48,8 +50,24 @@ When hand-editing `.prefab` or `.scene` JSON:
 1. keep edits narrow
 2. preserve `__type__` blocks
 3. keep every `__id__` pointing at a valid array item
-4. parse the JSON after edits
+4. parse the JSON after edits with `scripts/validate-cocos-json.sh <asset.json>`
 5. prefer prefab skeletonization over full visual authoring by hand
+
+## JSON validation helper
+
+Use `scripts/validate-cocos-json.sh` after any manual `.prefab` or `.scene` edit.
+
+What it checks:
+
+- JSON parseability
+- top-level array shape expected by serialized Cocos assets
+- `__id__` references that point outside the serialized array
+
+What it does not check:
+
+- semantic engine correctness
+- missing UUID assets
+- component-field compatibility with the current Creator version
 
 ## Practical bias
 

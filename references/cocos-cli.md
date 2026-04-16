@@ -39,6 +39,7 @@ Notes:
 - `-j` is required for the project path
 - `-p` should be explicit, such as `web-mobile`, `web-desktop`, `android`, or `ios`
 - if the team keeps build config files, prefer `-c` over ad hoc flags
+- run `scripts/check-cocos-env.sh <project-root>` first when Node, `cocos`, or project metadata may be mismatched
 
 ### Run
 
@@ -82,3 +83,4 @@ Use `cocos create` for new projects and `cocos make` for native project generati
 - Use `cocos` CLI for project lifecycle operations.
 - Use shell reads and targeted file edits for script, prefab, and scene changes.
 - Use lightweight bundling validation when full Creator compilation is blocked by environment issues.
+- Prefer reporting missing local prerequisites over guessing that Creator can build anyway.

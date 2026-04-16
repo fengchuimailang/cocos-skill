@@ -1,4 +1,4 @@
 interface:
   display_name: "Cocos Skill"
-  short_description: "Cocos Creator and cocos CLI workflow guidance"
-  default_prompt: "Use this skill when working on Cocos Creator projects, prefabs, scenes, and cocos CLI based validation or automation."
+  short_description: "Cocos Creator 3.x, prefab/scene JSON, and cocos CLI workflow guidance"
+  default_prompt: "Use this skill when working on Cocos Creator 3.x projects with cc TypeScript, prefab or scene JSON assets, creator.d.ts environment mismatches, and cocos CLI based validation, build, run, or MCP automation."

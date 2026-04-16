@@ -9,8 +9,20 @@ if ! command -v cocos >/dev/null 2>&1; then
 fi
 
 echo "project_root=${PROJECT_ROOT}"
+echo "node_bin=$(command -v node || echo missing)"
+echo "npm_bin=$(command -v npm || echo missing)"
+echo "npx_bin=$(command -v npx || echo missing)"
+echo "esbuild_bin=$(command -v esbuild || echo missing)"
 echo "cocos_bin=$(command -v cocos)"
-echo "cocos_version=$(cocos --version)"
+
+COCOS_VERSION_OUTPUT="$(cocos --version 2>&1 || true)"
+COCOS_VERSION_OUTPUT="$(printf '%s' "${COCOS_VERSION_OUTPUT}" | tr '\n' ' ' | sed 's/[[:space:]]\\+/ /g' | sed 's/^ //; s/ $//')"
+
+if [ -n "${COCOS_VERSION_OUTPUT}" ]; then
+  echo "cocos_version=${COCOS_VERSION_OUTPUT}"
+else
+  echo "cocos_version=unavailable"
+fi
 
 if [ -f "${PROJECT_ROOT}/package.json" ]; then
   echo "package_json=${PROJECT_ROOT}/package.json"
@@ -26,3 +38,17 @@ for path in assets settings tsconfig.json; do
     echo "exists_${path}=no"
   fi
 done
+
+if [ -d "${PROJECT_ROOT}/build-templates" ]; then
+  echo "exists_build_templates=yes"
+else
+  echo "exists_build_templates=no"
+fi
+
+if [ -d "${PROJECT_ROOT}/extensions" ]; then
+  echo "exists_extensions=yes"
+else
+  echo "exists_extensions=no"
+fi
+
+echo "platform_hint=prefer_explicit_platform_web-mobile_web-desktop_android_ios"
