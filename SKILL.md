@@ -1,9 +1,13 @@
 ---
 name: cocos-skill
-description: Work on Cocos Creator 3.x projects that use `cc` TypeScript scripts, `.prefab` or `.scene` assets, `creator.d.ts`, build templates, and the local `cocos` CLI. Use when Codex needs to inspect or edit Cocos project structure, validate host-side TypeScript entrypoints, manipulate prefab or scene JSON carefully, debug Creator environment mismatches, or run `cocos build`, `cocos run`, or `cocos start-mcp-server` for `web-mobile`, `web-desktop`, Android, or iOS workflows.
+description: Work on Cocos Creator 3.8+ projects that use `cc` TypeScript scripts, `.prefab` or `.scene` assets, `creator.d.ts`, build templates, and the local `cocos` CLI. Use when Codex needs to inspect or edit Cocos project structure, validate host-side TypeScript entrypoints, manipulate prefab or scene JSON carefully, debug Creator environment mismatches, or run `cocos build`, `cocos run`, or `cocos start-mcp-server` for `web-mobile`, `web-desktop`, Android, or iOS workflows.
 ---
 
 # Cocos Skill
+
+## Version Support
+
+This skill targets **Cocos Creator 3.8+**.
 
 ## Overview
 
@@ -24,6 +28,38 @@ Use the local `cocos` CLI first for environment discovery and host-side workflow
 | TypeScript host-side edits or broken imports | [references/project-validation.md](references/project-validation.md) | `scripts/validate-cocos-entry.sh <entry.ts>` |
 | `.prefab` or `.scene` JSON edits | [references/project-validation.md](references/project-validation.md) | `scripts/validate-cocos-json.sh <asset.json>` |
 | Unclear local Creator setup | [references/cocos-cli.md](references/cocos-cli.md) | `scripts/check-cocos-env.sh <project-root>` |
+
+## Quick Reference
+
+### Scripting
+
+- [Life Cycle Callbacks](references/docs/3.8/en/scripting/life-cycle-callbacks.md) - `onLoad`, `start`, `update`, `onDisable`, `onDestroy`
+- [Decorator Reference](references/docs/3.8/en/scripting/decorator.md) - `@ccclass`, `@property`, `@requireComponent`
+- [Node/Component Access](references/docs/3.8/en/scripting/access-node-component.md) - `find()`, `getComponent()`
+- [Component Basics](references/docs/3.8/en/scripting/component.md) - Creating and using components
+- [Scheduler](references/docs/3.8/en/scripting/scheduler.md) - Timers and scheduled callbacks
+
+### Assets
+
+- [Prefab Guide](references/docs/3.8/en/asset/prefab.md) - Create, instantiate, nest prefabs
+- [Dynamic Loading](references/docs/3.8/en/asset/dynamic-load-resources.md) - `resources.load()` usage
+- [Asset Manager](references/docs/3.8/en/asset/asset-manager.md) - Asset loading and management
+- [Bundle System](references/docs/3.8/en/asset/bundle.md) - Remote bundles and on-demand loading
+- [Sprite Frame](references/docs/3.8/en/asset/sprite-frame.md) - Sprite frame assets
+
+### UI Components
+
+- [Label](references/docs/3.8/en/ui-system/components/engine/label-layout.md) - Text display
+- [Sprite](references/docs/3.8/en/ui-system/components/engine/sliced-sprite.md) - Image display
+- [Button](references/docs/3.8/en/ui-system/components/engine/usage-ui.md) - Button interactions
+- [Layout](references/docs/3.8/en/ui-system/components/engine/auto-layout.md) - Auto layout
+- [Widget Align](references/docs/3.8/en/ui-system/components/engine/widget-align.md) - Widget alignment
+
+### 中文文档
+
+- [脚本系统](references/docs/3.8/zh/scripting/)
+- [资源管理](references/docs/3.8/zh/asset/)
+- [UI 组件](references/docs/3.8/zh/ui-system/components/engine/)
 
 ## Workflow
 
@@ -58,9 +94,25 @@ Use the local `cocos` CLI first for environment discovery and host-side workflow
 
 - CLI details: [references/cocos-cli.md](references/cocos-cli.md)
 - Validation and prefab JSON guidance: [references/project-validation.md](references/project-validation.md)
+- Full documentation: `references/docs/3.8/en/`
+- 中文文档: `references/docs/3.8/zh/`
 
 ## Scripts
 
-- `scripts/check-cocos-env.sh <project-root>`
-- `scripts/validate-cocos-entry.sh <entry.ts> [outfile]`
-- `scripts/validate-cocos-json.sh <asset.json>`
+- `scripts/check-cocos-env.sh <project-root>` - Check Cocos environment
+- `scripts/validate-cocos-entry.sh <entry.ts> [outfile]` - Validate TypeScript entry
+- `scripts/validate-cocos-json.sh <asset.json>` - Validate prefab/scene JSON
+- `scripts/update-docs.sh <cocos-docs-path> [version]` - Update documentation
+- `scripts/validate-docs-links.sh` - Validate documentation links
+
+## Upgrading Documentation
+
+When Cocos Creator releases a new version:
+
+```bash
+# Update docs from local cocos-docs repository
+./scripts/update-docs.sh /path/to/cocos-docs 3.9
+
+# Validate all links
+./scripts/validate-docs-links.sh
+```

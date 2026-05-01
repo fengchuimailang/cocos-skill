@@ -1,4 +1,22 @@
 interface:
   display_name: "Cocos Skill"
-  short_description: "Cocos Creator 3.x, prefab/scene JSON, and cocos CLI workflow guidance"
-  default_prompt: "Use this skill when working on Cocos Creator 3.x projects with cc TypeScript, prefab or scene JSON assets, creator.d.ts environment mismatches, and cocos CLI based validation, build, run, or MCP automation."
+  short_description: "Cocos Creator 3.8+ project workflow guidance"
+  default_prompt: |
+    Use this skill when working on Cocos Creator 3.8+ projects with:
+    - cc TypeScript scripts
+    - prefab or scene JSON assets
+    - creator.d.ts environment mismatches
+    - cocos CLI based validation, build, run, or MCP automation
+    
+    This skill provides:
+    - CLI workflow guidance
+    - Script validation tools
+    - Comprehensive Cocos Creator 3.8 documentation (English & Chinese)
+    - Progressive disclosure: start with SKILL.md, dive deeper into references/docs/ as needed
+    
+    Key files:
+    - SKILL.md - Main entry point with quick reference
+    - references/cocos-cli.md - CLI commands
+    - references/project-validation.md - Validation guidance
+    - references/docs/3.8/ - Full Cocos Creator 3.8 documentation
+    - scripts/ - Validation and update scripts
